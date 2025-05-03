@@ -77,16 +77,15 @@
 //
 #define CHIP_CONFIG_MAX_EXCHANGE_CONTEXTS 150
 
-// Safe to enable this flag since standalone is associated with host and not a device.
-#define CONFIG_BUILD_FOR_HOST_UNIT_TEST 1
+#define CONFIG_BUILD_FOR_HOST_UNIT_TEST 0
 
 // Allows app options (ports) to be configured on launch of app
 // from examples/ota-provider-app/linux/include/CHIPProjectAppConfig.h
 #define CHIP_DEVICE_ENABLE_PORT_PARAMS 1
 
 #define CHIP_DEVICE_CONFIG_TEST_SERIAL_NUMBER "1"
-#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION_STRING "2024.7.0"
-#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION 1
+#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION_STRING "2025.5.0"
+#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION 2
 #define CHIP_DEVICE_CONFIG_DEVICE_VENDOR_NAME "Nabu Casa"
 #define CHIP_DEVICE_CONFIG_DEVICE_PRODUCT_NAME "OTA Provider"
 
