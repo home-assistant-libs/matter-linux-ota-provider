@@ -82,11 +82,9 @@ jobs:
       matrix:
         arch:
           - name: x86-64
-            container: ghcr.io/project-chip/chip-build:81
             runner: ubuntu-22.04
             example-prefix: linux-x64-
           - name: aarch64
-            container: docker.io/agners/aarch64-chip-build:81
             runner: linux-arm64
             example-prefix: linux-arm64-
         include:
@@ -103,7 +101,7 @@ jobs:
         working-directory: ./connectedhomeip/
 
     container:
-      image: ${{ matrix.arch.container }}
+      image: ghcr.io/home-assistant-libs/chip-wheels/chip-wheels-builder:release
       volumes:
         - "/tmp/log_output:/tmp/test_logs"
       options: --sysctl "net.ipv6.conf.all.disable_ipv6=0
