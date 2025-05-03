@@ -127,7 +127,7 @@ jobs:
           ./scripts/examples/gn_build_example.sh \
               examples/ota-provider-app/linux/ \
               out/ \
-              chip_project_config_include_dirs=\[\"//../../../..\"\]
+              chip_project_config_include_dirs=\[\"//../../../..\"\] \
               chip_crypto=\"boringssl\" \
               chip_config_network_layer_ble=false \
               chip_enable_wifi=false \
@@ -135,7 +135,7 @@ jobs:
               chip_exchange_node_id_logging=true \
               chip_mdns=\"minimal\" \
               chip_minmdns_default_policy=\"libnl\" \
-              chip_use_data_model_interface=\"enabled\" \
+              chip_use_data_model_interface=\"enabled\"
           cp out/chip-ota-provider-app bin/
       - name: Rename and strip symbols
         run: |
