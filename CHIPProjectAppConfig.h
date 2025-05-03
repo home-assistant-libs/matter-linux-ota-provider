@@ -62,6 +62,9 @@
 
 #define CHIP_CONFIG_DATA_MANAGEMENT_CLIENT_EXPERIMENTAL 1
 
+// Increase maximum retransmit from 4 to 8 to handle unreliable devices
+#define CHIP_CONFIG_RMP_DEFAULT_MAX_RETRANS 8
+
 #ifndef CHIP_DEVICE_CONFIG_DYNAMIC_ENDPOINT_COUNT
 #define CHIP_DEVICE_CONFIG_DYNAMIC_ENDPOINT_COUNT 4
 #endif
