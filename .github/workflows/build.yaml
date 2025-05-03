@@ -60,7 +60,7 @@ jobs:
           done
       - name: Bootstrap
         working-directory: ./connectedhomeip/
-        run: bash scripts/bootstrap.sh -p all,linux
+        run: bash scripts/bootstrap.sh -p build,linux
       - name: ZAP Code pre-generation
         working-directory: ./connectedhomeip/
         run: scripts/run_in_build_env.sh "scripts/codepregen.py ./zzz_pregenerated/"
