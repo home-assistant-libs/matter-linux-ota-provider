@@ -134,8 +134,7 @@ jobs:
               chip_enable_openthread=false \
               chip_exchange_node_id_logging=true \
               chip_mdns=\"minimal\" \
-              chip_minmdns_default_policy=\"libnl\" \
-              chip_use_data_model_interface=\"enabled\"
+              chip_minmdns_default_policy=\"libnl\"
           cp out/chip-ota-provider-app bin/
       - name: Rename and strip symbols
         run: |
