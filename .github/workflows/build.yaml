@@ -60,7 +60,7 @@ jobs:
           done
       - name: Bootstrap
         working-directory: ./connectedhomeip/
-        run: bash scripts/bootstrap.sh -p all,linux
+        run: bash scripts/bootstrap.sh -p build,linux
       - name: ZAP Code pre-generation
         working-directory: ./connectedhomeip/
         run: scripts/run_in_build_env.sh "scripts/codepregen.py ./zzz_pregenerated/"
@@ -82,11 +82,9 @@ jobs:
       matrix:
         arch:
           - name: x86-64
-            container: ghcr.io/project-chip/chip-build:42
             runner: ubuntu-22.04
             example-prefix: linux-x64-
           - name: aarch64
-            container: docker.io/agners/aarch64-chip-build:42
             runner: linux-arm64
             example-prefix: linux-arm64-
         include:
@@ -103,7 +101,7 @@ jobs:
         working-directory: ./connectedhomeip/
 
     container:
-      image: ${{ matrix.arch.container }}
+      image: ghcr.io/home-assistant-libs/chip-wheels/chip-wheels-builder:release
       volumes:
         - "/tmp/log_output:/tmp/test_logs"
       options: --sysctl "net.ipv6.conf.all.disable_ipv6=0
@@ -129,12 +127,15 @@ jobs:
           ./scripts/examples/gn_build_example.sh \
               examples/ota-provider-app/linux/ \
               out/ \
+              chip_project_config_include_dirs=\[\"//../../../..\"\] \
+              chip_crypto=\"boringssl\" \
               chip_config_network_layer_ble=false \
               chip_enable_wifi=false \
               chip_enable_openthread=false \
+              chip_exchange_node_id_logging=true \
+              chip_mdns=\"minimal\" \
               chip_minmdns_default_policy=\"libnl\" \
-              chip_crypto=\"boringssl\" \
-              chip_project_config_include_dirs=\[\"//../../../..\"\]
+              chip_use_data_model_interface=\"enabled\"
           cp out/chip-ota-provider-app bin/
       - name: Rename and strip symbols
         run: |

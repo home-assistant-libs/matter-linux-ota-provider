@@ -62,6 +62,9 @@
 
 #define CHIP_CONFIG_DATA_MANAGEMENT_CLIENT_EXPERIMENTAL 1
 
+// Increase maximum retransmit from 4 to 8 to handle unreliable devices
+#define CHIP_CONFIG_RMP_DEFAULT_MAX_RETRANS 8
+
 #ifndef CHIP_DEVICE_CONFIG_DYNAMIC_ENDPOINT_COUNT
 #define CHIP_DEVICE_CONFIG_DYNAMIC_ENDPOINT_COUNT 4
 #endif
@@ -77,16 +80,15 @@
 //
 #define CHIP_CONFIG_MAX_EXCHANGE_CONTEXTS 150
 
-// Safe to enable this flag since standalone is associated with host and not a device.
-#define CONFIG_BUILD_FOR_HOST_UNIT_TEST 1
+#define CONFIG_BUILD_FOR_HOST_UNIT_TEST 0
 
 // Allows app options (ports) to be configured on launch of app
 // from examples/ota-provider-app/linux/include/CHIPProjectAppConfig.h
 #define CHIP_DEVICE_ENABLE_PORT_PARAMS 1
 
 #define CHIP_DEVICE_CONFIG_TEST_SERIAL_NUMBER "1"
-#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION_STRING "2024.7.0"
-#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION 1
+#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION_STRING "2025.5.0"
+#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION 2
 #define CHIP_DEVICE_CONFIG_DEVICE_VENDOR_NAME "Nabu Casa"
 #define CHIP_DEVICE_CONFIG_DEVICE_PRODUCT_NAME "OTA Provider"
 
