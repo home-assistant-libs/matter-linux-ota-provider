@@ -5,7 +5,7 @@ on: push
 jobs:
   build_prepare:
     name: Prepare build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     outputs:
       version: ${{ steps.version.outputs.version }}
       channel: ${{ steps.version.outputs.channel }}
@@ -82,10 +82,10 @@ jobs:
       matrix:
         arch:
           - name: x86-64
-            runner: ubuntu-22.04
+            runner: ubuntu-24.04
             example-prefix: linux-x64-
           - name: aarch64
-            runner: linux-arm64
+            runner: ubuntu-24.04-arm
             example-prefix: linux-arm64-
         include:
           - examples: >-
@@ -134,8 +134,7 @@ jobs:
               chip_enable_openthread=false \
               chip_exchange_node_id_logging=true \
               chip_mdns=\"minimal\" \
-              chip_minmdns_default_policy=\"libnl\" \
-              chip_use_data_model_interface=\"enabled\"
+              chip_minmdns_default_policy=\"libnl\"
           cp out/chip-ota-provider-app bin/
       - name: Rename and strip symbols
         run: |
